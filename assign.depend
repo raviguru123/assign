@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1474046298 source:/home/goparties/Desktop/assign/main.cpp
+	<iostream>
+	<vector>
+	<algorithm>
+	"hashmap.h"
+
+1473959610 /home/goparties/Desktop/assign/hashFunction.h
+	<vector>
+
+1474046290 /home/goparties/Desktop/assign/hashmap.h
+
