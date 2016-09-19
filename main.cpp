@@ -4,7 +4,7 @@
 #include<math.h>
 #include<string>
 #include "hashmap.h"
-#define min_value -1000000;//if value not find in map then this value will return from lookup function;
+#define min_value -1000000//if value not find in map then this value will return from lookup function;
 using namespace std;
 
 
@@ -103,10 +103,13 @@ int main()
     insertkeyAndValue(map,3,16);
     deletekeyAndValue(map,3);
     deletekeyAndValue(map,16);
+
     cout<<lookup(map,4)<<endl;
-    deletekeyAndValue(map,4);
-    deletekeyAndValue(map,1);
-    cout<<lookup(map,67)<<endl;
+
+    if(lookup(map,67)==min_value){
+    cout<<"element not insert for key 67"<<endl;
+    }
+    print(map);
     print(map);
     return 0;
 }
