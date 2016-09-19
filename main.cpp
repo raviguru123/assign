@@ -97,7 +97,7 @@ int main()
 {
 
     vector<node *> map;
-    insertkeyAndValue(map,1,10);
+    insertkeyAndValue(map,1,10);//first parameter pointer to node class and second paramter key and third parameter
     insertkeyAndValue(map,4,12);
     insertkeyAndValue(map,3,13);
     insertkeyAndValue(map,3,16);

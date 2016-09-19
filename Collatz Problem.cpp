@@ -1,10 +1,11 @@
 #include<iostream>
 using namespace std;
-
+//this function is use to check odd even number
 bool isEven(int number){
     return (number&1)==0;
 }
 
+//collatz number generator
 int generateSeries(int number){
     return (isEven(number)==true?number/2:3*number+1);
 }

@@ -1,6 +1,6 @@
 #include <iostream>
 using namespace std;
-
+/* brute force method egyption series generator*/
 void generateEgyptianSeries(int numerator, int denominator)
 {
     if (denominator== 0||numerator==0)
