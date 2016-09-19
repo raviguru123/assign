@@ -6,9 +6,11 @@ three function exist for directly interact
 
 (b). deletekeyAndValue: delete the value from hash map two argument accept first object of hashmap and second key(only integer).
 
-(c). searchkeyAndValue: search key exist or not first hashmap object and second key(only integer).
+(c). lookup:search key exist or not first hashmap object and second key(only integer).
 
 
 2. second problem Egyption fraction in Egyption.cpp (brute force implemntation) directly run using gcc compiler and follow instruction which are in terminal.
 
 3. Collatz Problem: third problem in Collatz.cpp directly run using gcc compiler.
+
+4. additional print function which is use for print all key and value accpet one argmuen map object.

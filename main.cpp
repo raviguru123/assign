@@ -4,7 +4,7 @@
 #include<math.h>
 #include<string>
 #include "hashmap.h"
-#define min_value -1000000;
+#define min_value -1000000;//if value not find in map then this value will return from lookup function;
 using namespace std;
 
 
@@ -79,7 +79,7 @@ bool deletekeyAndValue(vector<node*> &v,int key)
 
 
 
-int searchkeyAndValue(vector<node*> &v,int key)
+int lookup(vector<node*> &v,int key)
 {
     int index=searchKey(v,0,v.size(),hashKeyGeneration(convertInt(key)));
     if(index!=-1)
@@ -103,10 +103,10 @@ int main()
     insertkeyAndValue(map,3,16);
     deletekeyAndValue(map,3);
     deletekeyAndValue(map,16);
-    cout<<searchkeyAndValue(map,4)<<endl;
+    cout<<lookup(map,4)<<endl;
     deletekeyAndValue(map,4);
     deletekeyAndValue(map,1);
-    cout<<searchkeyAndValue(map,67)<<endl;
+    cout<<lookup(map,67)<<endl;
     print(map);
     return 0;
 }
