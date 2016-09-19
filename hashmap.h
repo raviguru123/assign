@@ -9,7 +9,7 @@ public:
     node *next;
 };
 
-node* createNode(int key,int value)
+node* createNode(int key,int value)//this function is use for create new node for has map
 {
     node *newnode=new node();
     newnode->key=key;
@@ -18,7 +18,7 @@ node* createNode(int key,int value)
     return newnode;
 }
 
-node * searchNode(node *head,int key)
+node * searchNode(node *head,int key) //this function is use for search node if linked list situation occur, due to collision.
 {
 
     while(head->next!=NULL)
@@ -33,14 +33,14 @@ node * searchNode(node *head,int key)
 
 }
 
-void insertNode(node *head,node *keynode)
+void insertNode(node *head,node *keynode)// this function is use for inserting node in chain
 {
     while(head->next!=NULL)
         head=head->next;
     head->next=keynode;
 }
 
-bool searchAndDelete(node *head,int key)
+bool searchAndDelete(node *head,int key) //this function is use for search and delete node from list
 {
     node *temp;
     if(head->next==NULL)
@@ -73,7 +73,7 @@ bool searchAndDelete(node *head,int key)
 
 }
 //label 1 function start from here
-void print(vector<node*>&v)
+void print(vector<node*>&v) //this function is use to print hash map
 {
     for(int i=0; i<v.size(); i++)
     {
@@ -87,7 +87,7 @@ void print(vector<node*>&v)
 
 }
 
-int hashKeyGeneration(string word)
+int hashKeyGeneration(string word) //this function is use for generate internal key for data stirage
 {
     int result = 0;
     for(size_t i = 0; i < word.length(); ++i)
@@ -97,7 +97,7 @@ int hashKeyGeneration(string word)
     return result;
 }
 
-string convertInt(int number)
+string convertInt(int number) //this functin is use for conerting int to string value
 {
     if (number == 0)
         return "0";
@@ -113,7 +113,7 @@ string convertInt(int number)
     return returnvalue;
 }
 
-int searchKey(vector<node*> &v,int low,int high,int key)
+int searchKey(vector<node*> &v,int low,int high,int key) //binary search functionality check if key is exist in hash functuion
 {
     int mid=(low+high)/2;
     if(low>=high)
@@ -136,7 +136,7 @@ int searchKey(vector<node*> &v,int low,int high,int key)
 
 }
 
-node * createMapNode(int indexKey,int key,int value)
+node * createMapNode(int indexKey,int key,int value) //this function is use for creating new node for has map
 {
     node *head=new node();
     head->key=indexKey;
