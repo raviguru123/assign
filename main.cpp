@@ -4,8 +4,21 @@
 #include<math.h>
 #include<string>
 #include "hashmap.h"
+#define min_value -1000000;
 using namespace std;
+void print(vector<node*>&v)
+{
+    for(int i=0; i<v.size(); i++)
+    {
+        while(v[i]->next!=NULL)
+        {
+            cout<<"key="<<v[i]->next->key<<" value="<<v[i]->next->value<<" ";
+            v[i]=v[i]->next;
+        }
+        cout<<endl;
+    }
 
+}
 
 int hashKeyGeneration(string word)
 {
@@ -56,56 +69,103 @@ int searchKey(vector<node*> &v,int low,int high,int key)
 
 }
 
+node * createMapNode(int indexKey,int key,int value)
+{
+    node *head=new node();
+    head->key=indexKey;
+    node *newNode=new node();
+    newNode->key=key;
+    newNode->value=value;
+    newNode->next=NULL;
+    head->next=newNode;
+    return head;
+}
+
+
 void insertkeyAndValue(vector<node*> &v,int key,int value)
 {
     int pos=0,i;
-    key=hashKeyGeneration(convertInt(key));
+    int indexkey=hashKeyGeneration(convertInt(key));
     if(v.size()==0)
     {
-        node *newNode=new node();
-        newNode->key=key;
-        newNode->value=value;
+        node *newNode=createMapNode(indexkey,key,value);
         v.push_back(newNode);
+        return;
     }
 
-    i=searchKey(v,0,v.size(),key);
-
-
+    i=searchKey(v,0,v.size(),indexkey);
     if(i==-1)
     {
-        node *newNode=new node();
-        newNode->key=key;
-        newNode->value=value;
-        i = v.size()-1;
-        while(key<v[i]->key && i>=0)
+        i = v.size();
+        while(indexkey<v[i-1]->key&& i>0)
         {
-
             i--;
         }
-        v.insert(v.begin()+i+1,newNode);
+        node *newNode=createMapNode(indexkey,key,value);
+        v.insert(v.begin()+i,newNode);
+
     }
     else
     {
-        v[i]->value=value;
+        node *temp=v[i];
+        bool isExist=false;
+
+        while(temp->next!=NULL)
+        {
+            if(temp->next->key==key)
+            {
+                isExist=true;
+                temp->next->value=value;
+                temp=temp->next;
+            }
+
+        }
+        if(isExist==false)
+        {
+            node *keyNode=new node();
+            keyNode->key=key;
+            keyNode->value=value;
+            keyNode->next=NULL;
+            insertNode(v[i],keyNode);
+        }
+
     }
 
 }
 
 bool deletekeyAndValue(vector<node*> &v,int key)
 {
-    int index=searchKey(v,0,v.size(), key=hashKeyGeneration(convertInt(key)));
+    int index=searchKey(v,0,v.size(),hashKeyGeneration(convertInt(key)));
     if(index!=-1)
     {
-        v.erase(v.begin()+index);
-    }
+        if(searchAndDelete(v[index],key)==true)
+        {
+            if(v[index]->next==NULL)
+            {
+                v.erase(v.begin()+index);
+            }
+        }
+        return true;
 
-    for(int i=0; i<v.size(); i++)
-    {
-        cout<<"key="<<v[i]->key<<" and value="<<v[i]->value<<endl;
     }
-
-    return true;
+    return false;
 }
+
+
+
+int searchValue(vector<node*> &v,int key)
+{
+    int index=searchKey(v,0,v.size(),hashKeyGeneration(convertInt(key)));
+    if(index!=-1)
+    {
+        node *keyNode=searchNode(v[index],key);
+        if(keyNode!=NULL)
+            return keyNode->value;
+    }
+
+    return min_value;
+}
+
 
 int main()
 {
@@ -114,6 +174,12 @@ int main()
     insertkeyAndValue(map,1,10);
     insertkeyAndValue(map,4,12);
     insertkeyAndValue(map,3,13);
+    insertkeyAndValue(map,3,16);
+    deletekeyAndValue(map,3);
+    deletekeyAndValue(map,16);
     deletekeyAndValue(map,4);
+    deletekeyAndValue(map,1);
+    cout<<searchValue(map,1)<<endl;
+    print(map);
     return 0;
 }

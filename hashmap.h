@@ -20,27 +20,16 @@ node* createNode(int key,int value)
 
 node * searchNode(node *head,int key)
 {
-    head=head->next;
-    node *flag=head;
-    while(flag!=NULL)
-    {
-        cout<<flag->value<<" ";
-        flag=flag->next;
-    }
 
-    cout<<endl;
-    if(head==NULL)
-        return head;
-
-    while(head!=NULL&&head->key!=key)
+    while(head->next!=NULL)
     {
+        if(head->next->key==key)
+        {
+            return head->next;
+        }
         head=head->next;
     }
-
-    if(head!=NULL&&head->key==key)
-        return head;
-    else
-        return NULL;
+    return NULL;
 
 }
 
